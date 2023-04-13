@@ -6,6 +6,15 @@ const { NotImplementedError } = require("../extensions/index.js");
  * Implement simple binary search tree according to task description
  * using Node from extensions
  */
+
+class Node {
+ constructor(data) {
+  this.data = data;
+  this.left = null;
+  this.right = null;
+ }
+}
+
 class BinarySearchTree {
  constructor() {
   this.rootNode = null;
@@ -16,20 +25,12 @@ class BinarySearchTree {
  }
 
  add(value) {
-  const node = {
-   data: value,
-   left: null,
-   right: null,
-  };
-
-  // console.log("node", node);
+  const node = new Node(value);
 
   if (!this.rootNode) {
    this.rootNode = node;
   } else {
    let current = this.rootNode;
-
-   //  this.insertNode(current, node);
 
    while (true) {
     if (value < current.data) {
@@ -52,22 +53,6 @@ class BinarySearchTree {
    }
   }
  }
-
- // insertNode(current, node) {
- //   if (node.value < current.value) {
- //     if (!current.left) {
- //       current.left = node;
- //     } else {
- //       this.insertNode(current.left, node);
- //     }
- //   } else if (node.value > current.value) {
- //     if (!current.right) {
- //       current.right = node;
- //     } else {
- //       this.insertNode(current.right, node);
- //     }
- //   }
- // }
 
  has(value) {
   let current = this.rootNode;
@@ -173,4 +158,3 @@ class BinarySearchTree {
 module.exports = {
  BinarySearchTree,
 };
-
